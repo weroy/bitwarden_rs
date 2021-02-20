@@ -120,16 +120,16 @@ if [[ "${DOCKER_TAG}" != *alpine ]]; then
     image="${DOCKER_REPO}":"${DOCKER_TAG}"
 
     # Fetch the multi-arch manifest list and find the digest of the armv6 image.
-    filter='.manifests|.[]|select(.platform.architecture=="arm" and .platform.variant=="v6")|.digest'
-    digest="$(docker manifest inspect "${image}" | jq -r "${filter}")"
+###    filter='.manifests|.[]|select(.platform.architecture=="arm" and .platform.variant=="v6")|.digest'
+###    digest="$(docker manifest inspect "${image}" | jq -r "${filter}")"
 
     # Pull the armv6 image by digest, retag it, and repush it.
-    docker pull "${DOCKER_REPO}"@"${digest}"
-    docker tag "${DOCKER_REPO}"@"${digest}" "${image}"-arm32v6
-    docker push "${image}"-arm32v6
+###    docker pull "${DOCKER_REPO}"@"${digest}"
+###    docker tag "${DOCKER_REPO}"@"${digest}" "${image}"-arm32v6
+###    docker push "${image}"-arm32v6
 
-    if [[ "${DOCKER_TAG}" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
-        docker tag "${image}"-arm32v6 "${DOCKER_REPO}:latest"-arm32v6
-        docker push "${DOCKER_REPO}:latest"-arm32v6
-    fi
-fi
+###    if [[ "${DOCKER_TAG}" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+###        docker tag "${image}"-arm32v6 "${DOCKER_REPO}:latest"-arm32v6
+###        docker push "${DOCKER_REPO}:latest"-arm32v6
+###    fi
+###fi
